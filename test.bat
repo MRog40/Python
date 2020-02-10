@@ -1,0 +1,1 @@
+python -i C:/Users/7258163/Documents/Python_Scripts/test.py %*

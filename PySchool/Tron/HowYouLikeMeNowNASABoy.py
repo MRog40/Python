@@ -1,0 +1,46 @@
+import numpy as np
+import pandas
+import matplotlib.pyplot as plt
+from matplotlib.ticker import EngFormatter
+
+
+# Global settings
+title1 = "Lab 4 Circuit 1 Temperature vs Gain"
+unit1x, unit1y = '°C', ''
+xlabel1 = "$Temperature$"
+ylabel1 = "$Gain$"
+
+# Figure
+fig = plt.figure()
+plt1 = fig.add_subplot(111)
+
+# Formatting
+plt1.xaxis.set_major_formatter(EngFormatter(unit=unit1x))
+plt1.yaxis.set_major_formatter(EngFormatter(unit=unit1y))
+
+# Labels
+plt1.set_title(title1)
+plt1.set_xlabel(xlabel1)
+plt1.set_ylabel(ylabel1)
+
+# Data
+gain = [0.473032519735002000,	0.630436946935005000,	0.814051414975001000,	1.021981460424990000,	1.249782784230000000,	1.491838417260000000,	1.743762380144990000,	2.003114138759990000,	2.268981099584990000,	2.541186134700000000,	2.819806731340000000,	3.104877446725000000,	3.396610772530000000,	3.694889542505000000,	3.999651562950000000,	4.310715971875010000,	4.627760193235000000,	4.950512950535000000,	5.278604022725000000,	5.611621632630000000,	5.949105469780000000,	6.290563663215010000,	6.635469873335000000,	6.983328852285000000,	7.333463638870000000,	7.684838691080000000,	8.038213483760000000,	8.391721301800000000,	8.745252995290000000,	9.098113643120000000,	9.449851663005000000,	9.801427649960000000,	10.148236658770000000,	10.493334005915000000,	10.834613236035000000,	11.174220689510000000,	11.505009332825000000	,11.819342527815000000,	12.141839180870000000]
+temp = [-90	,-80	,-70	,-60	,-50,	-40,	-30,	-20,	-10,	0,	10,	20,	30,	40	,50	,60	,70	,80	,90	,100	,110	,120	,130	,140	,150	,160	,170,	180,	190,	200,	210,	220,	230,	240,	250,	260,	270,	280,	290]
+
+# Calculate Diff List1 - List2
+def diff(List1, List2):
+    diff = [List1[0] - List2[0]]
+    iterList1 = iter(List1)
+    iterList2 = iter(List2)
+    next(iterList1)
+    next(iterList2)
+    for x, y in zip(iterList1, iterList2):
+        diff.append(x-y)
+    return diff
+
+# Plot
+plt1.plot(temp, gain, '-ok', markersize=4)
+
+#plt1.legend()
+plt.tight_layout()
+plt.show()
